@@ -20,7 +20,7 @@ it('Teste se a página mostra a imagem',
       .getByAltText(/Pikachu crying because the page requested was not found/i);
 
     // fazer os testes
-    expect(getImage).toBeInTheDocument();
+    expect(getImage).toHaveAttribute('src', 'https://media.giphy.com/media/kNSeTs31XBZ3G/giphy.gif');
   });
 
 // interagir com os elementos (se necessario)
