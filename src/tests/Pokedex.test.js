@@ -54,7 +54,7 @@ describe('Teste se aparece o próximo pokémon quando o botão Próximo pokémon
         };
           // acessar os elementos da tela
         renderWithRouter(<Pokedex
-          isPokemonFavoriteBy={ favoritesPokemons }
+          isPokemonFavoriteById={ favoritesPokemons }
           pokemons={ pokemons }
         />);
 
@@ -62,21 +62,22 @@ describe('Teste se aparece o próximo pokémon quando o botão Próximo pokémon
         expect(button).toBeInTheDocument();
       });
 
-    it.only('Os próximos pokémons da lista devem ser mostrados', async () => {
+    it('Os próximos pokémons da lista devem ser mostrados', async () => {
       const favoritesPokemons = {
-        25: true,
-        4: true,
+        4: false,
         10: false,
         23: false,
+        25: true,
         65: false,
         78: false,
         143: false,
         148: false,
         151: false,
+
       };
       // acessar os elementos da tela
       renderWithRouter(<Pokedex
-        isPokemonFavoriteBy={ favoritesPokemons }
+        isPokemonFavoriteById={ favoritesPokemons }
         pokemons={ pokemons }
       />);
 
@@ -91,4 +92,60 @@ describe('Teste se aparece o próximo pokémon quando o botão Próximo pokémon
 
       expect(nextPokemon).toBeInTheDocument();
     });
+
+    it('O 1º pokémon da lista deve ser mostrado ao clicar no botão, se estiver no ultimo',
+      async () => {
+        const favoritesPokemons = {
+          4: false,
+          25: true,
+        };
+        renderWithRouter(<Pokedex
+          isPokemonFavoriteById={ favoritesPokemons }
+          pokemons={ [
+            pokemons[0],
+            pokemons[1],
+          ] }
+        />);
+
+        const firstPokemon = screen.getByText(/pikachu/i);
+        expect(firstPokemon).toBeInTheDocument();
+
+        const button = screen.getByRole('button', { name: /Próximo/i });
+
+        userEvent.click(button);
+
+        const lastPokemon = await screen.findByText(/Charmander/i);
+        expect(lastPokemon).toBeInTheDocument();
+
+        userEvent.click(button);
+
+        const firstPokemonAgain = await screen.findByText(/pikachu/i);
+        expect(firstPokemonAgain).toBeInTheDocument();
+      });
+  });
+
+it.only('Teste se é mostrado apenas um pokémon por vez',
+  async () => {
+    const favoritesPokemons = {
+      4: false,
+      25: true,
+    };
+
+    renderWithRouter(<Pokedex
+      isPokemonFavoriteById={ favoritesPokemons }
+      pokemons={ pokemons }
+    />);
+
+    const pikachu = screen.getByText(/pikachu/i);
+    expect(pikachu).toBeInTheDocument();
+
+    const buttonNext = screen.getByRole('button', { name: /próximo/i });
+
+    userEvent.click(buttonNext);
+
+    const charmander = await screen.findByText(/Charmander/i);
+    const pikachuNull = screen.queryByRole(/pikachu/i);
+
+    expect(pikachuNull).toBeNull();
+    expect(charmander).toBeInTheDocument();
   });
