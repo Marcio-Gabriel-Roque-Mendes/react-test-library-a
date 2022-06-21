@@ -16,7 +16,7 @@ class PokemonButtonsPanel extends Component {
         </Button>
         {pokemonTypes.map((type) => (
           <Button
-            dataTestId={`pokemon-type-button`}
+            dataTestId="pokemon-type-button"
             key={ type }
             onClick={ () => filterPokemons(type) }
             className="filter-button"
