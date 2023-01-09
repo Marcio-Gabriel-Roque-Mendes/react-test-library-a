@@ -2,9 +2,7 @@ import React from 'react';
 import { screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import renderWithRouter from '../renderWithRouter';
-// import Pokemon from '../components/Pokemon';
-// import pokemons from '../data';
-import App from '../App';
+import App from '../App.js';
 
 describe('Teste se é renderizado um card com as informações de determinado pokémon',
   () => {
@@ -55,9 +53,6 @@ test('Teste se o clique no link -More details- redireciona para a pagina de deta
     expect(titleSummary).toBeInTheDocument();
   });
 
-/* Não queria usar o Pikachu para esse teste, esse é
-  o único motivo por ter usado tantas linhas, a parte
-  importante desse teste esta sinalizada com: !!! */
 test('Teste também se a URL exibida no navegador muda para /pokemon/<id>',
   () => {
     const { history } = renderWithRouter(<App />);
@@ -68,7 +63,7 @@ test('Teste também se a URL exibida no navegador muda para /pokemon/<id>',
     const pokemonEkans = screen.getByText(/ekans/i);
     expect(pokemonEkans).toBeDefined();
 
-    /* !!! */ const moreDetailsLink = screen.getByRole('link', { name: /more details/i });
+    const moreDetailsLink = screen.getByRole('link', { name: /more details/i });
 
     userEvent.click(moreDetailsLink);
     expect(history.location.pathname).toBe('/pokemons/23');
@@ -98,8 +93,3 @@ describe('Teste se existe um ícone de estrela nos pokémons favoritados:', () =
 
   });
 });
-// // acessar os elementos da tela
-
-// // interagir com os elementos (se necessario)
-
-// // fazer os testes

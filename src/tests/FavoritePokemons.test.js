@@ -8,7 +8,7 @@ test('Teste se é exibida na tela a mensagem No favorite pokemon found',
   () => {
     // acessar os elementos da tela
     renderWithRouter(<FavoritePokemons />);
-    const msgNaoEncontrado = screen.getByText('pokemon fou', { exact: false });
+    const msgNaoEncontrado = screen.getByText('pokemon found', { exact: false });
 
     // fazer os testes
     expect(msgNaoEncontrado).toBeInTheDocument();
