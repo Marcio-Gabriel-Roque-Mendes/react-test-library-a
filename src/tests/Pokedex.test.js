@@ -44,8 +44,7 @@ describe('Teste o componente <Pokedex.js />', () => {
       isPokemonFavoriteById={ favoritesPokemons }
       pokemons={ pokemons }
     />);
-    // const currentPokemon = screen.getByText(/pikachu/i);
-    // expect(currentPokemon).toBeInTheDocument();
+
     const button = screen.getByRole('button', { name: /Próximo/i });
     userEvent.click(button);
     const nextPokemon = await screen.findByText(/Charmander/i);
@@ -65,8 +64,7 @@ describe('Teste o componente <Pokedex.js />', () => {
           pokemons[1],
         ] }
       />);
-      // const firstPokemon = screen.getByText(/pikachu/i);
-      // expect(firstPokemon).toBeInTheDocument();
+ 
       const button = screen.getByRole('button', { name: /Próximo/i });
       userEvent.click(button);
       const lastPokemon = await screen.findByText(/Charmander/i);
@@ -87,8 +85,7 @@ describe('Teste o componente <Pokedex.js />', () => {
         isPokemonFavoriteById={ favoritesPokemons }
         pokemons={ pokemons }
       />);
-      // const pikachu = screen.getByText(/pikachu/i);
-      // expect(pikachu).toBeInTheDocument();
+
       const buttonNext = screen.getByRole('button', { name: /próximo/i });
       userEvent.click(buttonNext);
       const charmander = await screen.findByText(/Charmander/i);

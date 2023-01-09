@@ -5,22 +5,18 @@ import NotFound from '../pages/NotFound';
 
 test('Teste se a página contém um heading h2 com o texto Page requested not found',
   () => {
-    // acessar os elementos da tela
     renderWithRouter(<NotFound />);
     const headingNotFound = screen.getByText(/Page requested not found/i);
-    // fazer os testes
+
     expect(headingNotFound).toBeInTheDocument();
   });
 
 it('Teste se a página mostra a imagem',
   () => {
-    // acessar os elementos da tela
     renderWithRouter(<NotFound />);
     const getImage = screen
       .getByAltText(/Pikachu crying because the page requested was not found/i);
 
-    // fazer os testes
     expect(getImage).toHaveAttribute('src', 'https://media.giphy.com/media/kNSeTs31XBZ3G/giphy.gif');
   });
 
-// interagir com os elementos (se necessario)

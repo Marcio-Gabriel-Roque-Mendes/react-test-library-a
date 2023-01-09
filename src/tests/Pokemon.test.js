@@ -88,8 +88,4 @@ describe('Teste se existe um ícone de estrela nos pokémons favoritados:', () =
     expect(starFavorite).toHaveAttribute('alt', expect
       .stringContaining('Pikachu is marked as favorite'));
   });
-
-  test('', () => {
-
-  });
 });
