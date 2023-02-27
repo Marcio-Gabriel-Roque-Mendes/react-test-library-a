@@ -1,3 +1,8 @@
+# React Testing Library
+
+## :clapper: Prévia com os testes rodando:
+https://user-images.githubusercontent.com/99992471/210023066-aedede5e-9fa0-4def-a374-3e25ad5c5568.mp4
+
 ## ✏ Sobre o projeto
 O objetivo do projeto foi desenvolver testes a partir de uma aplicação <strong>React</strong> sobre cartas pokemons, já criada e configurada. :writing_hand:
 </br>
@@ -50,9 +55,6 @@ npm test Pokemon.test.js
 src/tests
 ```
 ![Captura de tela de 2022-12-29 21-19-49](https://user-images.githubusercontent.com/99992471/210023160-feb4c678-1aaf-4739-8c0a-60e553f23f3b.png)
-
-## Prévia com os testes rodando:
-https://user-images.githubusercontent.com/99992471/210023066-aedede5e-9fa0-4def-a374-3e25ad5c5568.mp4
 
 ## Testes desenvolvido por: 
 Marcio Gabriel Roque Mendes
